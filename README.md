@@ -19,4 +19,4 @@ Sau đó, dùng hàm đệ quy `findPath(path, diemNgap, arrayDiemNgap)` để t
 > npm install
 - 2. Khi install package hoàn thành, tiến hành chạy 
 > npm start
-- 3. Vào localhost:3000 trong trình duyệt web để chạy chương trìnhgit 
+- 3. Vào localhost:3000 trong trình duyệt web để chạy chương trình
