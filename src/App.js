@@ -29,7 +29,7 @@ class App extends Component {
   render() {
     const s = this.state.s;
     const arrayDiemNgap = Service.createArrayDiemNgap(s);
-    console.log(arrayDiemNgap)
+    
     for (let diemNgap of arrayDiemNgap) {
       Service.findPath('', diemNgap, arrayDiemNgap);
     }
