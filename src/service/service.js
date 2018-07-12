@@ -1,8 +1,14 @@
 import DiemNgap from '../model/diem-ngap';
 
 let maxPath = '';
-let deletePos = null;
-let maxConnection = 0;
+let deletePos = -1;
+let maxConnection = -1;
+
+function initValue() {
+  maxPath = '';
+  deletePos = '';
+  maxConnection = 0;
+}
 
 function getMaxPath() {
   return maxPath;
@@ -22,7 +28,7 @@ function createArrayDiemNgap(value) {
     let diemNgap = new DiemNgap(i, valueOfDiemNghap)
     arrayDiemNgap.push(diemNgap);
   }
-  
+
   return arrayDiemNgap;
 }
 
@@ -30,14 +36,14 @@ function createArrayDiemNgap(value) {
 // diemNgap: Object
 // arrayDiemNgap: Array Object
 function findPath(path, diemNgap, arrayDiemNgap) {
+  if (path.includes(String(diemNgap.pos))) {
+    return 0;
+  }
+
   let numOfConnection = diemNgap.next.length;
   if (numOfConnection > maxConnection) {
     maxConnection = numOfConnection;
     deletePos = diemNgap.pos;
-  }
-
-  if (path.includes(String(diemNgap.pos))) {
-    return 0;
   }
 
   path = path + diemNgap.pos;
@@ -57,6 +63,7 @@ function getDiemNgap(pos, arrayDiemNgap) {
 }
 
 export {
+  initValue,
   createArrayDiemNgap,
   findPath,
   getDiemNgap,

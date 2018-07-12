@@ -3,26 +3,66 @@ import DiemNgap from './model/diem-ngap';
 import * as Service from './service/service';
 
 class App extends Component {
+  state = {
+    s: '1100000110000001100000001111000011000010100000011'
+  }
+
+  onChangeHandle = (event) => {
+    Service.initValue();
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
+
+  printVungNgap = (vungNgapLonNhat) => {
+    let result = '';
+    for (let i = 0; i < vungNgapLonNhat.length; i++) {
+      if (i < vungNgapLonNhat.length - 1) {
+        result += vungNgapLonNhat[i] + ', '
+      } else {
+        result += vungNgapLonNhat[i]
+      }
+    }
+    return result;
+  }
 
   render() {
-    // const s = '1001001001101100001000001';
-    const s = '111000110110101010010100011011000011';
-    
-    let maxPath = '';
-    let diemNgap = new DiemNgap(0, '10101');
-
+    const s = this.state.s;
     const arrayDiemNgap = Service.createArrayDiemNgap(s);
-
-    for(let diemNgap of arrayDiemNgap) {
+    console.log(arrayDiemNgap)
+    for (let diemNgap of arrayDiemNgap) {
       Service.findPath('', diemNgap, arrayDiemNgap);
     }
 
-    console.log(Service.getMaxPath())
-    console.log(Service.getDeletePos());
+    const vungNgapLonNhat = [];
+    const maxPath = Service.getMaxPath();
+
+    for (let i = 0; i < maxPath.length; i++) {
+      vungNgapLonNhat.push(Number(maxPath[i]));
+    }
+
+    const viTriCanXoa = Service.getDeletePos()
 
     return (
-      <div className="App">
-       hello
+      <div className="App" style={{ textAlign: 'center' }}>
+        <h1 >Hackathon Test</h1>
+        <div style={{ margin: '15px 0' }}>
+          Nhập chuỗi:
+          <input
+            type="text"
+            name="s"
+            style={{ width: '400px', height: '30px' }}
+            onChange={this.onChangeHandle}
+          />
+        </div>
+
+        <div>
+          - Điểm ngập lớn nhất: ({this.printVungNgap(vungNgapLonNhat)})
+        </div>
+        <br />
+        <div>
+          - Vị trí cần phải xử lý: {viTriCanXoa}
+        </div>
       </div>
     );
   }
