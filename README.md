@@ -8,9 +8,15 @@ class DiemNgap {
   next[]: number 
 ```
 trong đó: 
- *pos: vị trí của điểm ngập nước
- *next[]: mảng chứa vị trí của các điểm ngập nước liên thông
+ pos: vị trí của điểm ngập nước
+ next[]: mảng chứa vị trí của các điểm ngập nước liên thông
 
 Từ chuỗi N*N đề bài ta khởi tạo được mảng gồm N các điểm ngập nước.
 Sau đó, dùng hàm đệ quy `findPath(path, diemNgap, arrayDiemNgap)` để tìm ra vùng ngập nước lớn nhất bằng việc duyệt từng phần tử trong mảng điểm ngập (arrDiemNgap). Đồng thời ta tìm điểm cần xử lý qua việc tìm điểm ngập có số lượng điểm ngập liên thông lớn nhất.
+
 2. Build and Run
+- 1. Vào folder Hackathon để install package:
+> npm install
+- 2. Khi install package hoàn thành, tiến hành chạy 
+> npm start
+- 3. Vào localhost:3000 trong trình duyệt web để chạy chương trìnhgit 
