@@ -4,7 +4,7 @@ import * as Service from './service/service';
 
 class App extends Component {
   state = {
-    s: '1100000110000001100000001111000011000010100000011'
+    s: ''
   }
 
   onChangeHandle = (event) => {
